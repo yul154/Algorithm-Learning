@@ -141,7 +141,7 @@ if data>self.max_stack[-1]:
   self.max_stack.append(data)
 else:
   seld.max_stack.append(maxstack[-1])
- 
+```
 # Queue with stack problem
 >  design a queue abstract data type with the help of stacks
 
