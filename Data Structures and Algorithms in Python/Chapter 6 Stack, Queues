@@ -1,0 +1,6 @@
+# Stacks
+* Web browsers store the addresses of visited
+* `undo` Mechanism
+* it is more efficient in practice to construct a list with initial length n than it is to start with an empty list and append n items
+
+# Queue
