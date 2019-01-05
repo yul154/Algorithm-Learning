@@ -88,5 +88,40 @@ def quick_Sort(S,a,b):
   2. Hybrid Approach: Shell Sort
     
 # Comparing sorting Algorithms
-* Selection s
- 
+* Selection Sorting: Best cast in O(n^2)
+* Insertion Sorting: Insertion-sort is quite effective for sorting sequences that are already “almost” sorted, better in small size
+* Heap Sorting: heap-sort tends to be outperformed by both quick-sort and merge-sort on larger sequences, but not stable
+* Quick Sorting:  not in must make guarantees on the time needed to complete a sorting operation,default choice for a general-purpose, in-memory sorting algorithm.No stable
+* Merge Sorting: Not in-place,guarantees on the time needed
+* Bucket-Sort and Radix-Sort:sorting entries with small integer keys, character strings or d-tuples of keys from a discrete range,O(d(n+N))
+
+# Python build-in sorting 
+* Decorate-Sort-Undecorate Design Pattern
+    1. Each element is temporarily replaced with a “decorated” version(keys)
+    2. Sorting based upon the orde of keys
+    3. The decorated elements are replaced by the original elements
+  
+ # Selection
+## Prune search(Decease conquer)
+* Pruning away a fraction of the n objects and recursively solving the smaller problem.
+* Randomized Quick-Select
+```
+def quick select(S, k):
+”””Return the kth smallest element of list S, for k from 1 to len(S).””” 
+    if len(S) == 1:
+        return S[0]
+    pivot = random.choice(S)
+    L = [x for x in S if x < pivot] 
+    E = [x for x in S if x == pivot] 
+    G = [x for x in S if pivot < x] 
+    if k <= len(L):
+        return quick select(L, k) 
+    elif k <= len(L) + len(E):
+        return pivot 
+    else:
+        j = k − len(L) − len(E) 
+        return quick select(G, j)
+```
+
+
+
