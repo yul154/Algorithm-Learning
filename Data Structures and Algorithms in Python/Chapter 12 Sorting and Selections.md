@@ -86,6 +86,30 @@ def quick_Sort(S,a,b):
     quick_Sort(S,l+1,b)
 ```
   2. Hybrid Approach: Shell Sort
+  
+## Linear-Time Sorting: Bucket-Sort and Radix-Sort
+* comparison-based sorting has an Ω(nlogn) worst-case lower bound on its running time
+* the height of T is at least log(n!)
+* Bucket-Sort(stable)
+  * Assumption: The range of sequence is not too large
+```
+def bucket_sort(arr):
+    largest=max(arr)
+    size=largest/len(arr)
+    bucket=[[] for num in range(len(arr))]
+    for i in range(len(arr)):
+        j=int(arr[i]/size)
+        if j!=len(arr):
+            bucket[j].append(arr[i])
+        else:
+            bucket[len(arr)-1].append(arr[i])
+    for i in range(len(arr)):
+        insert_sort(bucket[i])
+    res=[]
+    for i in range(len(arr)):
+        res+=bucket[i]
+    return res
+```
     
 # Comparing sorting Algorithms
 * Selection Sorting: Best cast in O(n^2)
