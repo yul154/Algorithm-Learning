@@ -33,9 +33,114 @@
   * Adding or removing vertices from a graph, the matrix must be resized.
   * O(n2) space usage of an adjacency matrix is typically far worse than the O(n + m) space required of the other representations
   
-  ##  Adjacency Map Implementation
+##  Adjacency Map Implementation
   
-  # Graph Treversals
-  #
-  # Graph Treversals#
-  # Graph Treversals
+# Graph Treversals
+## DFS
+```
+def DFS(G,u):
+   u.visited()
+   for v in u.edge :
+      if not v.visited:
+         DFS(G,v)
+```
+* Running Time
+ * called at most once on each vertex 
+ * every edge is examined at most twice for an undirected graph, once from each of its end vertices, and at most once in a directed graph,
+ 
+ ## BFS
+ > traversaling level by level
+```
+def BFS(s,G,discoversed):
+   Q=[s]
+   s.visited(True)
+   while Q:
+       for v in s and not v.visited():
+          Q.append(v)
+          v.visited(True)
+       Q.pop(0)
+            
+```
+# topological ordering
+> an ordering such that any directed path in Gì traverses vertices in increasing order.
+
+> a topological ordering if and only if it is acyclic.
+ * topological sorting:computing a topo- logical ordering of a directed graph
+ ```
+ def topological sort(g):
+”””Return a list of verticies of directed acyclic graph g in topological order.
+    If graph g has a cycle, the result will be incomplete. ”””
+     topo = [ ]
+     ready = [ ]
+     incount = { }
+    for u in g.vertices():
+        incount[u] = g.degree(u, False) 
+        if incount[u] == 0:
+           ready.append(u) 
+    while len(ready) > 0:
+    u = ready.pop( ) 
+    topo.append(u)
+    for e in g.incident edges(u):
+        v = e.opposite(u) 
+       incount[v] −= 1
+       if incount[v] == 0:
+          ready.append(v)
+     return topo
+ ```
+ * Performance :runs in O(n + m) time using O(n) auxiliary space
+ 
+ # Shortest Paths
+ ## Weight Graphs
+ > a graph that has a numeric label associated with each edge e
+ ## Dijkstra's Algorithm
+ * Greed method
+ * BFS
+ * Heap based
+ * No negative weight edge
+ * Edge relaxation
+ ```
+ if D[u]+w(u,v)<D[v]:
+    D[v]=D[u]+w(u,v)
+ ```
+ 
+ ## Implementation
+ ```
+ def Dijkstra(g,start):
+    d={}
+    cloud={}
+    Q=Heap()
+    for v in g.vertives():
+        if v==start:
+            d[v]=0
+        else:
+            d[v]=float('inf')
+        Q.push(d[v],v)
+    while Q:
+        key,u=Q.pop()
+        cloud[u]=key
+        for v in u.connections():
+            if v not in cloud:
+                weight=e(u,v)
+                if d[u]+weight<d[v]:
+                    d[v]=d[u]+weight
+                    Q.update(d[v],v)
+ ```
+# Minimum Spanning Trees
+ > a tree T that contains all the vertices of G and has the minimum total weight over all such trees.
+## Prim-Jarn ́ık Algorithm
+> Start an arbitrary vertex,in each iteration, we choose a minimum-weight edge e
+* Running time: O(mlogn) 
+```
+def prim(g):
+    start=g.r
+        
+        clould[v]=Q.add(d[v],(v,None))
+```
+ ## Kruskal’s Algorithm
+ * Edge based 
+ * order edge by increasing weight
+ * merge cloud
+ 
+ 
+ 
+ 
