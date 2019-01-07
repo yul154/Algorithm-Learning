@@ -132,15 +132,45 @@ def BFS(s,G,discoversed):
 * Running time: O(mlogn) 
 ```
 def prim(g):
-    start=g.r
-        
-        clould[v]=Q.add(d[v],(v,None))
+    start=g.random(vertices)
+    unvisited=[v of v in g.vertices() if v is not start]
+    Q=heap.push(start.connection of edge)
+    tree=[start]
+    while unvisited:
+       edge=Q.pop()
+       cur=edge.opposite()
+       tree.append(cur)
+       for v in cur.connections:
+          if v in unvisited:
+             Q.push(edge)
+       unvisited.remove(cur)
+     return tree
 ```
  ## Kruskal’s Algorithm
  * Edge based 
  * order edge by increasing weight
- * merge cloud
- 
+ * merge clouds
+ * Running time：O(m log n)
+  1. Ordering of edges by weight can be implemented in O(m log n).
+  2. the management of clusters can be implemented in  O(m + n log n) t）
+### Disjoint partitions
+* A tree based partition: the root of each node are same (path compression)
+```
+def find(p):
+   if p.parent!=p:
+      p.parent=self.find(p.parent)
+   return p.parent
+   
+def union(p,q):
+   a=find(p)
+   b=find(q)
+   if a is not b:
+      if a.size>b.size:
+        b.parent=a
+        a.size+=b.size
+      else:
+        b.parent=a
+        b.size+=a.size
  
  
  
